@@ -1,4 +1,5 @@
 defmodule LsmFoodReloadedWeb.Router do
+  alias LsmFoodReloadedWeb.BusinessLive
   use LsmFoodReloadedWeb, :router
 
   import LsmFoodReloadedWeb.UserAuth
@@ -56,6 +57,7 @@ defmodule LsmFoodReloadedWeb.Router do
       live "/users/log_in", UserLoginLive, :new
       live "/users/reset_password", UserForgotPasswordLive, :new
       live "/users/reset_password/:token", UserResetPasswordLive, :edit
+
     end
 
     post "/users/log_in", UserSessionController, :create
@@ -81,5 +83,12 @@ defmodule LsmFoodReloadedWeb.Router do
       live "/users/confirm/:token", UserConfirmationLive, :edit
       live "/users/confirm", UserConfirmationInstructionsLive, :new
     end
+  end
+
+  scope "/businesses" do
+    pipe_through [:browser]
+    live "/", BusinessLive.Index, :index
+    live "/new", BusinessLive.Index, :new
+    live "/:id/edit", BusinessLive.Index, :edit
   end
 end
