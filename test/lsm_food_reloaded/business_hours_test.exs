@@ -66,4 +66,60 @@ defmodule LsmFoodReloaded.BusinessHoursTest do
       assert %Ecto.Changeset{} = BusinessHours.change_bussiness_hour(bussiness_hour)
     end
   end
+
+  describe "business_hours" do
+    alias LsmFoodReloaded.BusinessHours.BusinessHour
+
+    import LsmFoodReloaded.BusinessHoursFixtures
+
+    @invalid_attrs %{active: nil, name: nil}
+
+    test "list_business_hours/0 returns all business_hours" do
+      business_hour = business_hour_fixture()
+      assert BusinessHours.list_business_hours() == [business_hour]
+    end
+
+    test "get_business_hour!/1 returns the business_hour with given id" do
+      business_hour = business_hour_fixture()
+      assert BusinessHours.get_business_hour!(business_hour.id) == business_hour
+    end
+
+    test "create_business_hour/1 with valid data creates a business_hour" do
+      valid_attrs = %{active: true, name: "some name"}
+
+      assert {:ok, %BusinessHour{} = business_hour} = BusinessHours.create_business_hour(valid_attrs)
+      assert business_hour.active == true
+      assert business_hour.name == "some name"
+    end
+
+    test "create_business_hour/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = BusinessHours.create_business_hour(@invalid_attrs)
+    end
+
+    test "update_business_hour/2 with valid data updates the business_hour" do
+      business_hour = business_hour_fixture()
+      update_attrs = %{active: false, name: "some updated name"}
+
+      assert {:ok, %BusinessHour{} = business_hour} = BusinessHours.update_business_hour(business_hour, update_attrs)
+      assert business_hour.active == false
+      assert business_hour.name == "some updated name"
+    end
+
+    test "update_business_hour/2 with invalid data returns error changeset" do
+      business_hour = business_hour_fixture()
+      assert {:error, %Ecto.Changeset{}} = BusinessHours.update_business_hour(business_hour, @invalid_attrs)
+      assert business_hour == BusinessHours.get_business_hour!(business_hour.id)
+    end
+
+    test "delete_business_hour/1 deletes the business_hour" do
+      business_hour = business_hour_fixture()
+      assert {:ok, %BusinessHour{}} = BusinessHours.delete_business_hour(business_hour)
+      assert_raise Ecto.NoResultsError, fn -> BusinessHours.get_business_hour!(business_hour.id) end
+    end
+
+    test "change_business_hour/1 returns a business_hour changeset" do
+      business_hour = business_hour_fixture()
+      assert %Ecto.Changeset{} = BusinessHours.change_business_hour(business_hour)
+    end
+  end
 end

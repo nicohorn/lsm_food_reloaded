@@ -22,4 +22,19 @@ defmodule LsmFoodReloaded.BusinessHoursFixtures do
 
     bussiness_hour
   end
+
+  @doc """
+  Generate a business_hour.
+  """
+  def business_hour_fixture(attrs \\ %{}) do
+    {:ok, business_hour} =
+      attrs
+      |> Enum.into(%{
+        active: true,
+        name: "some name"
+      })
+      |> LsmFoodReloaded.BusinessHours.create_business_hour()
+
+    business_hour
+  end
 end
