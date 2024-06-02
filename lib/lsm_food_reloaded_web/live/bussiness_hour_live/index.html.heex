@@ -1,0 +1,46 @@
+<.header>
+  Listing Business hours
+  <:actions>
+    <.link patch={~p"/business_hours/new"}>
+      <.button>New Bussiness hour</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="business_hours"
+  rows={@streams.business_hours}
+  row_click={fn {_id, bussiness_hour} -> JS.navigate(~p"/business_hours/#{bussiness_hour}") end}
+>
+  <:col :let={{_id, bussiness_hour}} label="Day"><%= bussiness_hour.day %></:col>
+  <:col :let={{_id, bussiness_hour}} label="Open time"><%= bussiness_hour.open_time %></:col>
+  <:col :let={{_id, bussiness_hour}} label="Close time"><%= bussiness_hour.close_time %></:col>
+  <:col :let={{_id, bussiness_hour}} label="Takeaway"><%= bussiness_hour.takeaway %></:col>
+  <:col :let={{_id, bussiness_hour}} label="Dine in"><%= bussiness_hour.dine_in %></:col>
+  <:col :let={{_id, bussiness_hour}} label="Delivery"><%= bussiness_hour.delivery %></:col>
+  <:action :let={{_id, bussiness_hour}}>
+    <div class="sr-only">
+      <.link navigate={~p"/business_hours/#{bussiness_hour}"}>Show</.link>
+    </div>
+    <.link patch={~p"/business_hours/#{bussiness_hour}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, bussiness_hour}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: bussiness_hour.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal :if={@live_action in [:new, :edit]} id="bussiness_hour-modal" show on_cancel={JS.patch(~p"/business_hours")}>
+  <.live_component
+    module={LsmFoodReloadedWeb.BussinessHourLive.FormComponent}
+    id={@bussiness_hour.id || :new}
+    title={@page_title}
+    action={@live_action}
+    bussiness_hour={@bussiness_hour}
+    patch={~p"/business_hours"}
+  />
+</.modal>

@@ -1,5 +1,6 @@
 defmodule LsmFoodReloadedWeb.Router do
   alias LsmFoodReloadedWeb.BusinessLive
+  alias LsmFoodReloadedWeb.BussinessHourLive
   use LsmFoodReloadedWeb, :router
 
   import LsmFoodReloadedWeb.UserAuth
@@ -57,7 +58,6 @@ defmodule LsmFoodReloadedWeb.Router do
       live "/users/log_in", UserLoginLive, :new
       live "/users/reset_password", UserForgotPasswordLive, :new
       live "/users/reset_password/:token", UserResetPasswordLive, :edit
-
     end
 
     post "/users/log_in", UserSessionController, :create
@@ -90,5 +90,18 @@ defmodule LsmFoodReloadedWeb.Router do
     live "/", BusinessLive.Index, :index
     live "/new", BusinessLive.Index, :new
     live "/:id/edit", BusinessLive.Index, :edit
+
+    live "/:id", BussinessLive.Show, :show
+    live "/:id/show/edit", BussinessLive.Show, :edit
+  end
+
+  scope "/business_hours" do
+    pipe_through [:browser]
+    live "/", BussinessHourLive.Index, :index
+    live "/new", BussinessHourLive.Index, :new
+    live "/:id/edit", BussinessHourLive.Index, :edit
+
+    live "/:id", BussinessHourLive.Show, :show
+    live "/:id/show/edit", BussinessHourLive.Show, :edit
   end
 end

@@ -1,0 +1,31 @@
+<.header>
+  Bussiness hour <%= @bussiness_hour.id %>
+  <:subtitle>This is a bussiness_hour record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/business_hours/#{@bussiness_hour}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit bussiness_hour</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Day"><%= @bussiness_hour.day %></:item>
+  <:item title="Open time"><%= @bussiness_hour.open_time %></:item>
+  <:item title="Close time"><%= @bussiness_hour.close_time %></:item>
+  <:item title="Takeaway"><%= @bussiness_hour.takeaway %></:item>
+  <:item title="Dine in"><%= @bussiness_hour.dine_in %></:item>
+  <:item title="Delivery"><%= @bussiness_hour.delivery %></:item>
+</.list>
+
+<.back navigate={~p"/business_hours"}>Back to business_hours</.back>
+
+<.modal :if={@live_action == :edit} id="bussiness_hour-modal" show on_cancel={JS.patch(~p"/business_hours/#{@bussiness_hour}")}>
+  <.live_component
+    module={LsmFoodReloadedWeb.BussinessHourLive.FormComponent}
+    id={@bussiness_hour.id}
+    title={@page_title}
+    action={@live_action}
+    bussiness_hour={@bussiness_hour}
+    patch={~p"/business_hours/#{@bussiness_hour}"}
+  />
+</.modal>
