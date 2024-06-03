@@ -1,6 +1,7 @@
 defmodule LsmFoodReloadedWeb.Router do
   alias LsmFoodReloadedWeb.BusinessLive
-  alias LsmFoodReloadedWeb.BussinessHourLive
+  alias LsmFoodReloadedWeb.BusinessHourLive
+
   use LsmFoodReloadedWeb, :router
 
   import LsmFoodReloadedWeb.UserAuth
@@ -91,17 +92,18 @@ defmodule LsmFoodReloadedWeb.Router do
     live "/new", BusinessLive.Index, :new
     live "/:id/edit", BusinessLive.Index, :edit
 
-    live "/:id", BussinessLive.Show, :show
-    live "/:id/show/edit", BussinessLive.Show, :edit
+    live "/:id", BusinessLive.Show, :show
+    live "/:id/show/edit", BusinessLive.Show, :edit
   end
 
   scope "/business_hours" do
     pipe_through [:browser]
-    live "/", BussinessHourLive.Index, :index
-    live "/new", BussinessHourLive.Index, :new
-    live "/:id/edit", BussinessHourLive.Index, :edit
 
-    live "/:id", BussinessHourLive.Show, :show
-    live "/:id/show/edit", BussinessHourLive.Show, :edit
+    live "/", BusinessHourLive.Index, :index
+    live "/new", BusinessHourLive.Index, :new
+    live "/:id/edit", BusinessHourLive.Index, :edit
+
+    live "/:id", BusinessHourLive.Show, :show
+    live "/:id/show/edit", BusinessHourLive.Show, :edit
   end
 end

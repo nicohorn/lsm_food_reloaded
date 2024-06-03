@@ -1,4 +1,4 @@
-defmodule LsmFoodReloadedWeb.BussinessHourLive.Show do
+defmodule LsmFoodReloadedWeb.BusinessHourLive.Show do
   use LsmFoodReloadedWeb, :live_view
 
   alias LsmFoodReloaded.BusinessHours
@@ -13,9 +13,9 @@ defmodule LsmFoodReloadedWeb.BussinessHourLive.Show do
     {:noreply,
      socket
      |> assign(:page_title, page_title(socket.assigns.live_action))
-     |> assign(:bussiness_hour, BusinessHours.get_bussiness_hour!(id))}
+     |> assign(:business_hour, BusinessHours.get_business_hour!(id))}
   end
 
-  defp page_title(:show), do: "Show Bussiness hour"
-  defp page_title(:edit), do: "Edit Bussiness hour"
+  defp page_title(:show), do: "Show Business hour"
+  defp page_title(:edit), do: "Edit Business hour"
 end

@@ -8,9 +8,9 @@ defmodule LsmFoodReloaded.Businesses.Business do
     field :address, :string
     field :description, :string
     field :image, :string
-    field :phone_number, :integer
-    field :socials,  :string
-    field :featured, Ecto.Enum, values: [:premium, :sponsored, :basic]
+    field :phone_number, :string
+    field :socials, :string
+    field :featured, Ecto.Enum, values: [:premium, :sponsored, :basic], default: :basic
     field :owner, :id
 
     timestamps(type: :utc_datetime)
@@ -19,7 +19,20 @@ defmodule LsmFoodReloaded.Businesses.Business do
   @doc false
   def changeset(business, attrs) do
     business
-    |> cast(attrs, [:name, :description, :phone_number, :address, :socials, :featured, :enabled, :image])
-    |> validate_required([:name, :description, :phone_number, :address, :socials, :featured, :enabled])
+    |> cast(attrs, [
+      :name,
+      :description,
+      :phone_number,
+      :address,
+      :socials,
+      :featured,
+      :enabled,
+      :image
+    ])
+    |> validate_required([
+      :name,
+      :phone_number,
+      :address
+    ])
   end
 end

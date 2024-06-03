@@ -21,13 +21,9 @@ defmodule LsmFoodReloadedWeb.BusinessLive.FormComponent do
       >
         <.input field={@form[:name]} type="text" label="Name" />
         <.input field={@form[:description]} type="text" label="Description" />
-        <.input field={@form[:phone_number]} type="number" label="Phone number" />
+        <.input field={@form[:phone_number]} type="text" label="Phone number" />
         <.input field={@form[:address]} type="text" label="Address" />
-        <.input
-          field={@form[:socials]}
-          type="text"
-          label="Socials"
-        />
+        <.input field={@form[:socials]} type="text" label="Socials" />
         <.input
           field={@form[:featured]}
           type="select"

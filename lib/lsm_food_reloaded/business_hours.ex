@@ -6,7 +6,7 @@ defmodule LsmFoodReloaded.BusinessHours do
   import Ecto.Query, warn: false
   alias LsmFoodReloaded.Repo
 
-  alias LsmFoodReloaded.BusinessHours.BussinessHour
+  alias LsmFoodReloaded.BusinessHours.BusinessHour
 
   @doc """
   Returns the list of business_hours.
@@ -14,91 +14,91 @@ defmodule LsmFoodReloaded.BusinessHours do
   ## Examples
 
       iex> list_business_hours()
-      [%BussinessHour{}, ...]
+      [%BusinessHour{}, ...]
 
   """
   def list_business_hours do
-    Repo.all(BussinessHour)
+    Repo.all(BusinessHour)
   end
 
   @doc """
-  Gets a single bussiness_hour.
+  Gets a single business_hour.
 
-  Raises `Ecto.NoResultsError` if the Bussiness hour does not exist.
+  Raises `Ecto.NoResultsError` if the Business hour does not exist.
 
   ## Examples
 
-      iex> get_bussiness_hour!(123)
-      %BussinessHour{}
+      iex> get_business_hour!(123)
+      %BusinessHour{}
 
-      iex> get_bussiness_hour!(456)
+      iex> get_business_hour!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_bussiness_hour!(id), do: Repo.get!(BussinessHour, id)
+  def get_business_hour!(id), do: Repo.get!(BusinessHour, id)
 
   @doc """
-  Creates a bussiness_hour.
+  Creates a business_hour.
 
   ## Examples
 
-      iex> create_bussiness_hour(%{field: value})
-      {:ok, %BussinessHour{}}
+      iex> create_business_hour(%{field: value})
+      {:ok, %BusinessHour{}}
 
-      iex> create_bussiness_hour(%{field: bad_value})
+      iex> create_business_hour(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_bussiness_hour(attrs \\ %{}) do
-    %BussinessHour{}
-    |> BussinessHour.changeset(attrs)
+  def create_business_hour(attrs \\ %{}) do
+    %BusinessHour{}
+    |> BusinessHour.changeset(attrs)
     |> Repo.insert()
   end
 
   @doc """
-  Updates a bussiness_hour.
+  Updates a business_hour.
 
   ## Examples
 
-      iex> update_bussiness_hour(bussiness_hour, %{field: new_value})
-      {:ok, %BussinessHour{}}
+      iex> update_business_hour(business_hour, %{field: new_value})
+      {:ok, %BusinessHour{}}
 
-      iex> update_bussiness_hour(bussiness_hour, %{field: bad_value})
+      iex> update_business_hour(business_hour, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_bussiness_hour(%BussinessHour{} = bussiness_hour, attrs) do
-    bussiness_hour
-    |> BussinessHour.changeset(attrs)
+  def update_business_hour(%BusinessHour{} = business_hour, attrs) do
+    business_hour
+    |> BusinessHour.changeset(attrs)
     |> Repo.update()
   end
 
   @doc """
-  Deletes a bussiness_hour.
+  Deletes a business_hour.
 
   ## Examples
 
-      iex> delete_bussiness_hour(bussiness_hour)
-      {:ok, %BussinessHour{}}
+      iex> delete_business_hour(business_hour)
+      {:ok, %BusinessHour{}}
 
-      iex> delete_bussiness_hour(bussiness_hour)
+      iex> delete_business_hour(business_hour)
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_bussiness_hour(%BussinessHour{} = bussiness_hour) do
-    Repo.delete(bussiness_hour)
+  def delete_business_hour(%BusinessHour{} = business_hour) do
+    Repo.delete(business_hour)
   end
 
   @doc """
-  Returns an `%Ecto.Changeset{}` for tracking bussiness_hour changes.
+  Returns an `%Ecto.Changeset{}` for tracking business_hour changes.
 
   ## Examples
 
-      iex> change_bussiness_hour(bussiness_hour)
-      %Ecto.Changeset{data: %BussinessHour{}}
+      iex> change_business_hour(business_hour)
+      %Ecto.Changeset{data: %BusinessHour{}}
 
   """
-  def change_bussiness_hour(%BussinessHour{} = bussiness_hour, attrs \\ %{}) do
-    BussinessHour.changeset(bussiness_hour, attrs)
+  def change_business_hour(%BusinessHour{} = business_hour, attrs \\ %{}) do
+    BusinessHour.changeset(business_hour, attrs)
   end
 end

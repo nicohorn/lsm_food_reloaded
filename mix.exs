@@ -60,6 +60,7 @@ defmodule LsmFoodReloaded.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.2"},
       {:ecto_sqlite3_extras, "~> 1.2.0"},
+      {:faker, "~> 0.18", only: [:test, :dev]}
     ]
   end
 
