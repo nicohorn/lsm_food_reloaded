@@ -1,5 +1,6 @@
 defmodule LsmFoodReloadedWeb.Router do
   alias LsmFoodReloadedWeb.BusinessLive
+  alias LsmFoodReloadedWeb.BusinessHourLive
 
   use LsmFoodReloadedWeb, :router
 
@@ -91,8 +92,8 @@ defmodule LsmFoodReloadedWeb.Router do
     live "/new", BusinessLive.Index, :new
     live "/:id/edit", BusinessLive.Index, :edit
 
-    live "/:id", BussinessLive.Show, :show
-    live "/:id/show/edit", BussinessLive.Show, :edit
+    live "/:id", BusinessLive.Show, :show
+    live "/:id/show/edit", BusinessLive.Show, :edit
   end
 
   scope "/business_hours" do

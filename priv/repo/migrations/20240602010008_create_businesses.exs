@@ -5,7 +5,7 @@ defmodule LsmFoodReloaded.Repo.Migrations.CreateBusinesses do
     create table(:businesses) do
       add :name, :string
       add :description, :string
-      add :phone_number, :integer
+      add :phone_number, :string
       add :address, :string
       add :socials, {:array, :string}
       add :featured, :string
